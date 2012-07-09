@@ -12,8 +12,8 @@ class Comment(models.Model):
     body=models.TextField()
     author=models.CharField(max_length=60)
     created=models.DateField(auto_now=True)
-    update=models.DateField(auto_now=True)
-    post=models.ForeignKey(Post)
+    updated=models.DateField(auto_now=True)
+    post=models.ForeignKey(Post,related_name='comment')
     def __unicode__ (self):
         return self.author
     def first_60(self):
@@ -31,12 +31,12 @@ class PostAdmin(admin.ModelAdmin):
 
     
 class CommentAdmin(admin.ModelAdmin):
-    list_display = ('post', 'author','first_60','date created','date updated')
+    list_display = ('post', 'author','first_60','created','updated')
     list_filter=('created','author')
     
     
     
-admin.site.register(Post)
-admin.site.register(Comment)
+admin.site.register(Post,PostAdmin)
+admin.site.register(Comment,CommentAdmin)
   
     

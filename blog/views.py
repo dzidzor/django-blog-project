@@ -12,13 +12,15 @@ def post_list(request):
     return HttpResponse(post_list)
 
 def post_detail(request, id, showComments=False):
-    if showComments==True:
-        post_detail= request
-        print post_detail
-        return HttpResponse(post_detail)
+    result=Post.objects.get(pk=id)
+    html=''
+    for i in result.comment.all():
+        html+=str(i)
+    return HttpResponse(str(result)+'<br/>'+ str(result.body)+'<br/>'+ html)
     
 def post_search(request, term):
     result = re.search(r'.*',term)
+    
     return HttpResponse(result)
     
 
