@@ -1,0 +1,15 @@
+{%for post on posts%}
+	<h2>
+		<a href="/blog/posts/{{ post.id }}/true">
+			{{ post.title }}
+		</a>
+	</h2>
+	<ul>
+		<li>
+		{%extends "base/blog.html"%}
+		{%block content%}
+		
+		{%end block%}	
+		</li>
+	</ul>
+{%end for%}

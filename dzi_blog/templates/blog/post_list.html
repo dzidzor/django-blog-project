@@ -1,0 +1,17 @@
+{%for post on posts%}
+	<h2>
+		<a href="/blog/posts/{{ post.id }}/true">
+			{{ post.title }}
+		</a>
+	</h2>
+	<ul>
+		<li>
+		{%extends "base/blog.html"%}
+		{%block content%}
+		Created:{{Post.created}}
+		Updated:{{Post.updated}}
+		First_60={{Post.first_60}}
+		{%end block%}	
+		</li>
+	</ul>
+{%end for%}

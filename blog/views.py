@@ -16,7 +16,8 @@ def post_detail(request, id, showComments=False):
     html=''
     for i in result.comment.all():
         html+=str(i.body)+'<br/>'
-    return HttpResponse(str(result) + '<h5/>''<br/>' + result.body +'<h5/>'+'<br/>'+html)
+    return HttpResponse('<li>'+str(result) + '<h5/>''<br/>' + result.body +
+                        '<h5/>'+'<br/>'+'<p>'+html)
     
     
 def post_search(request, term):

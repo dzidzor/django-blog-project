@@ -2,6 +2,9 @@
 import dj_database_url
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
+import os
+SITE_ROOT = os.path.dirname(os.path.realpath(__file__))
+
 
 ADMINS = (
     # ('Your Name', 'your_email@example.com'),
@@ -108,6 +111,8 @@ ROOT_URLCONF = 'dzi_blog.urls'
 WSGI_APPLICATION = 'dzi_blog.wsgi.application'
 
 TEMPLATE_DIRS = (
+	os.path.join(SITE_ROOT,'templates'),
+
     # Put strings here, like "/home/html/django_templates" or "C:/www/django/templates".
     # Always use forward slashes, even on Windows.
     # Don't forget to use absolute paths, not relative paths.
