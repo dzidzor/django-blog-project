@@ -12,16 +12,19 @@ def post_list(request):
     return HttpResponse(post_list)
 
 def post_detail(request, id, showComments=False):
-    result=Post.objects.get(pk=id)
+    result=Post.objects.all()[int(id)-1]
     html=''
     for i in result.comment.all():
-        html+=str(i)
-    return HttpResponse(str(result)+'<br/>'+ str(result.body)+'<br/>'+ html)
+        html+=str(i.body)+'<br/>'
+    return HttpResponse(str(result) + '<h5/>''<br/>' + result.body +'<h5/>'+'<br/>'+html)
+    
     
 def post_search(request, term):
-    result = re.search(r'.*',term)
-    
-    return HttpResponse(result)
+    result=Post.objects.filter(body__contains=term)
+    response=''
+    for j in result:
+        response+=str(j)+'<br/>'
+    return HttpResponse(str(response))
     
 
 def home(request):
