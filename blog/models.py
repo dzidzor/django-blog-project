@@ -5,6 +5,8 @@ class Post(models.Model):
     body = models.TextField()
     created = models.DateField(auto_now=True)
     updated = models.DateField(auto_now=True)
+    def first_60(self):
+        return self.body[:60]
     def __unicode__ (self):
         return self.title
 

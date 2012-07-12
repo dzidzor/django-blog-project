@@ -1,33 +1,25 @@
-{%for post in posts%}
+{%extends "blog/base.html"%}
+{%block content%}
+	
 	<h2>
 		<a href="/blog/posts/{{ post.id }}/true">
-			{{ post.title }}
+			{{ posts.title }}
 		</a>
 	</h2>
 	<ul>
-		<li>
-		{%extends "base/blog.html"%}
-		{%block content%}
-		title={{Post.title}}
-		body={{Post.body}}
-		created={{Post.created}}
-		updated={{Post.updated}}
-		return title+body+created+updated
-		{%end block}	
-		</li>
-	<li>
-	c_author=''
-	c_body=''
-	c_created=''
-	c_updated=''
-	{%for c in Comment: %}
-		c_author+={{c.author}}
-		c_body+={{c.body}}
-		c_created+={{c.created}}
-		c_updated+={{c.updated}}
-	return c_author+c_body+c_created+c_updated
-	</li>
+		
+		<li>Body: {{posts.body}}</li></br>
+		Date Created: {{posts.created}}</br>
+		Date Updated: {{posts.updated}}
+                <h4>COMMENTS</h4>
+		By: <b>{{comment.author}}</b></br>
+		{{comment.body}}</br>
+		{{comment.created}}</br>
+		{{comment.updated}}
+	
+		
+	
 	</ul>	
-		
-		
-{%end for%}
+	
+	
+{%endblock%}

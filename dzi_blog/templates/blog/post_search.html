@@ -1,15 +1,12 @@
-{%for post on posts%}
+{%extends "blog/base.html"%}
+{%block content%}
 	<h2>
 		<a href="/blog/posts/{{ post.id }}/true">
 			{{ post.title }}
 		</a>
 	</h2>
 	<ul>
-		<li>
-		{%extends "base/blog.html"%}
-		{%block content%}
-		
-		{%end block%}	
-		</li>
+		<li>{{term.Post_search}}</li>
+		{{post.Post_search}}
 	</ul>
-{%end for%}
+{%endblock%}
