@@ -26,14 +26,14 @@ def post_detail(request, id, showComments=False):
     
     
 def post_search(request, term):
-    posts=Post.objects.filter(body__contains=term)
-    temp= loader.get_template('blog/post_search.html')
-    cont=Context({'posts':posts,'term':term})
+    posts=Post.objects.filter(title__contains=term)
+    #temp= loader.get_template('blog/post_search.html')
+    #cont=Context({})
     #result=Post.objects.filter(body__contains=term)
     #response=''
     #for j in result:
         #response+=str(j)+'<br/>'
-    return HttpResponse(temp.render(cont))
+    return render_to_response('blog/post_search.html',{'posts':posts,'term':term}) 
     
 
 def home(request):

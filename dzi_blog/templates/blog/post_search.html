@@ -1,12 +1,11 @@
 {%extends "blog/base.html"%}
 {%block content%}
 	<h2>
-		<a href="/blog/posts/{{ post.id }}/true">
-			{{ post.title }}
+{%for p in posts%}
+		<a href="/blog/posts/{{ p.id }}/true">
+			{{p}}
 		</a>
 	</h2>
-	<ul>
-		<li>{{term.Post_search}}</li>
-		{{post.Post_search}}
-	</ul>
+	
+{%endfor%}
 {%endblock%}
